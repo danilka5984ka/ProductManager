@@ -58,7 +58,7 @@ class ProductTest {
     }
 
     @Test
-    public void addAllProductsOne() {
+    public void shouldSearchOne() {
         manager.add(book1);
         manager.add(book2);
         manager.add(smartphone1);
@@ -71,7 +71,7 @@ class ProductTest {
     }
 
     @Test
-    public void addAllProductsTwo() {
+    public void shouldSearchTwo() {
         manager.add(book1);
         manager.add(book2);
         manager.add(smartphone1);
@@ -84,9 +84,7 @@ class ProductTest {
     }
 
     @Test
-    public void addAllProductThree() {
-
-
+    public void shouldSearchThree() {
         Product[] actual = manager.searchBy("колец");
         Product[] expected = {};
 
@@ -94,7 +92,7 @@ class ProductTest {
     }
 
     @Test
-    public void addAllProductFour() {
+    public void shouldSearchFour() {
         manager.add(book1);
         manager.add(book2);
         manager.add(smartphone1);
@@ -106,4 +104,36 @@ class ProductTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldSearchAuthor() {
+        manager.add(book1);
+        manager.add(book2);
+
+        Product[] actual = manager.searchBy("Толкин");
+        Product[] expected = {book1, book2};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchManufacturerOne() {
+        manager.add(smartphone1);
+        manager.add(smartphone2);
+
+        Product[] actual = manager.searchBy("App");
+        Product[] expected = {smartphone1};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchManufacturerTwo() {
+        manager.add(smartphone1);
+        manager.add(smartphone2);
+
+        Product[] actual = manager.searchBy("Gal");
+        Product[] expected = {smartphone2};
+
+        assertArrayEquals(expected, actual);
+    }
 }

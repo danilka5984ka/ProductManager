@@ -11,6 +11,10 @@ public class Product {
         this.cost = cost;
     }
 
+    public boolean matches(String search) {
+        return title.contains(search);
+    }
+
     public int getId() {
         return id;
     }
